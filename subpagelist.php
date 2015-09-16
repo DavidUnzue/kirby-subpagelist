@@ -26,7 +26,7 @@ class SubpagelistField extends BaseField {
    * @param mixed  $value
    */
   public function __set($option, $value) {
-      
+
     /* Set given value */
     $this->$option = $value;
 
@@ -35,17 +35,17 @@ class SubpagelistField extends BaseField {
       case 'flip':
         if(!is_bool($value))
           $this->flip = false;
-        break;          
+        break;
     }
   }
-    
+
   /**
    * Generate label markup
    *
    * @return string
    */
   public function label() {
-    
+
     return null;
 
   }
@@ -61,7 +61,7 @@ class SubpagelistField extends BaseField {
     $wrapper->addClass('subpagelist');
 
     $children = $this->subpages();
-    
+
     // add pagination to the subpages
     $limit = ($this->limit()) ? $this->limit() : 10000;
     $children = $children->paginate($limit, array('page' => get('page')));
@@ -116,7 +116,21 @@ class SubpagelistField extends BaseField {
     // reverse order
     if (isset($this->flip) && $this->flip == TRUE) {
       $subpages = $subpages->flip();
-    } 
+    }
+
+    // sorting options
+    if (isset($this->sort)) {
+      $sort_options = explode(" ", $this->sort);
+      if (count($sort_options) >= 2) {
+        $field = $sort_options[0];
+        $direction = $sort_options[1];
+      } else {
+        $field = $this->sort;
+        $direction = 'desc';
+      }
+      $method = SORT_REGULAR;
+      $subpages = $subpages->sortBy($field, $direction, $method);
+    }
 
     return $subpages;
   }
