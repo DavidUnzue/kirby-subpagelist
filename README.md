@@ -60,6 +60,7 @@ There are some optional parameter, which change the display of the subpagelist
 
 + `flip` – returns the subpages in reverse order 
 + `limit` – adds pagination after x items
++ `sort` – sorts subpagelist by existing field, e.g. 'Date'. This is useful for news listing.
 
 The parameter `filter` needs some more configuration:
 
@@ -82,6 +83,19 @@ fields:
 			template: mytemplate
 ...
 ```
+### Example with 'sort' setting
+
+```
+...
+fields:
+        latestnews:
+                label: Latest news
+                type:  subpagelist
+
+                sort:  date desc
+...
+```
+For this to work, a field 'date' must exist in the blueprint of the subpages.
 
 ### Hiding the subpages in the sidebar
 
