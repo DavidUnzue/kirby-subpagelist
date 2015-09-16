@@ -46,10 +46,7 @@ class SubpagelistField extends BaseField {
    */
   public function label() {
     
-    $label = parent::label();
-    $label->addClass('hgroup-title');
-    
-    return $label;
+    return null;
 
   }
 
@@ -72,7 +69,7 @@ class SubpagelistField extends BaseField {
     // use existing snippet to build the list
     // @see panel/app/controllers/views/pages.php
     $subpages = new Snippet('pages/sidebar/subpages', array(
-      'title'      => l('pages.show.subpages.title'),
+      'title'      => strip_tags(parent::label()),
       'page'       => $this->page(),
       'subpages'   => $children,
       'addbutton'  => !api::maxPages($this, $this->subpages()->max()),
