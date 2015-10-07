@@ -1,5 +1,5 @@
 .subpagelist-button {
-  margin-left: 10px;   
+  margin-left: 10px;
 }
 
 .subpagelist .shiv-white,
@@ -10,4 +10,8 @@
 .subpagelist-item-empty {
   padding: 1em;
   background: #ddd;
+}
+
+.hgroup-option-right a:first-child {
+    display: none;
 }
