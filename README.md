@@ -62,7 +62,7 @@ There are some optional parameter, which change the display of the subpagelist
 + `limit` – adds pagination after x items
 + `sort` – sorts subpagelist by existing field, e.g. 'Date'. This is useful for news listing.
 
-#### Example
+##### Example
 
 ```
 ...
@@ -86,7 +86,7 @@ The parameter `filter` needs some more configuration:
 + `template`– filters by [used](http://getkirby.com/docs/cheatsheet/page/template) (and not by [intended](http://getkirby.com/docs/cheatsheet/page/intended-template)) template
 + `field` – you can also filter by any other field of the subpages, the same as you would do using the [filterBy function](http://getkirby.com/docs/cheatsheet/pages/filterBy). Therefor you have to define the `name`, `value` and optionaly another value to be compared to (see examples below).
 
-### Example 1
+##### Example 1
 
 ```
 ...
@@ -106,7 +106,7 @@ fields:
 ```
 This will filter all subpages which are `visible`, use the template `mytemplate` and have a field named `description` containing (`*=`) the string `test`.
 
-### Example 2
+##### Example 2
 
 ```
 ...
