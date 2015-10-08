@@ -111,6 +111,17 @@ class SubpagelistField extends BaseField {
       if (!empty($filter['template'])) {
         $subpages = $subpages->filterBy('template',$filter['template']);
       }
+
+      // only specific field value
+      if (isset($filter['field'])) {
+        if (isset($filter['field']['name']) && isset($filter['field']['value'])) {
+            if (isset($filter['field']['compared_to'])) {
+              $subpages = $subpages->filterBy($filter['field']['name'],$filter['field']['value'], $filter['field']['compared_to']);
+            } else {
+              $subpages = $subpages->filterBy($filter['field']['name'],$filter['field']['value']);
+            }
+        }
+      }
     }
 
     // reverse order
