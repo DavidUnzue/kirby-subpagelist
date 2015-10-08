@@ -15,3 +15,17 @@
 .hgroup-option-right a:first-child {
     display: none;
 }
+
+.subpagelist.no-sorting .hgroup .hgroup-title {
+    display: none;
+}
+.subpagelist.no-sorting .hgroup .hgroup-options {
+    top: -35px;
+}
+.subpagelist.no-sorting .sidebar-list .marginalia {
+    display: none;
+}
+.subpagelist.no-sorting .subpage-title {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.5em;
+}

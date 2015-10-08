@@ -60,6 +60,14 @@ class SubpagelistField extends BaseField {
     $wrapper = new Brick('div');
     $wrapper->addClass('subpagelist');
 
+    // avoid and hide page sorting posibilities
+    $supages_title = strip_tags(parent::label());
+    $disable_subpages_title = false;
+    if (isset($this->sortable) && $this->sortable == false) {
+      $wrapper->addClass('no-sorting');
+      $disable_subpages_title = true;
+    }
+
     $children = $this->subpages();
 
     // add pagination to the subpages
@@ -69,7 +77,7 @@ class SubpagelistField extends BaseField {
     // use existing snippet to build the list
     // @see panel/app/controllers/views/pages.php
     $subpages = new Snippet('pages/sidebar/subpages', array(
-      'title'      => strip_tags(parent::label()),
+      'title'      => $disable_subpages_title ? null : $supages_title,
       'page'       => $this->page(),
       'subpages'   => $children,
       'addbutton'  => !api::maxPages($this, $this->subpages()->max()),
@@ -77,7 +85,7 @@ class SubpagelistField extends BaseField {
     ));
 
     // use template with defined vars
-    $wrapper->html(tpl::load(__DIR__ . DS . 'template.php', array('subpages' => $subpages)));
+    $wrapper->html(tpl::load(__DIR__ . DS . 'template.php', array('subpages' => $subpages, 'disable_subpages_title' => $disable_subpages_title, 'subpages_title' => $supages_title)));
     return $wrapper;
 
   }
